@@ -9,7 +9,13 @@ __all__ = (
     'disabletranslations',
 )
 
-from django.template.base import (
+# Template module has been changed in Django 1.9
+try:
+    from django.template.base import (
+    Library, Node, TemplateSyntaxError
+    )
+except ImportError:
+    from django.template import (
     Library, Node, TemplateSyntaxError
     )
 from django.utils import translation
